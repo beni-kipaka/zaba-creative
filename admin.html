@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="robots" content="noindex,nofollow">
+<title>Dashboard | Zaba Créative</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:var(--bg2)}
+.login{min-height:100vh;display:grid;place-items:center;padding:1rem}
+.box{width:min(420px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;display:grid;gap:1rem}
+.box img{width:56px;border-radius:12px}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 4%;background:var(--card);border-bottom:1px solid var(--line)}
+.dash{display:grid;grid-template-columns:1.1fr 1fr;gap:1.5rem;padding:2rem 4%}
+.pan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.5rem;display:grid;gap:1rem;align-content:start}
+.pan h2{font-size:1.4rem;margin:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.row small{color:var(--mut)}.row div{display:flex;gap:.4rem}
+.k{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.k b{font-size:2rem;color:var(--red)}
+.pan label{display:grid;gap:.3rem;font-weight:600;font-size:.95rem}
+.ok{color:#1a8f4a;min-height:1.2em}[hidden]{display:none!important}
+@media(max-width:860px){.dash{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section class="login" id="login">
+  <form class="box" id="lf">
+    <img src="assets/logo.png" alt="Zaba Créative"><h2 style="margin:0">Espace administrateur</h2>
+    <label>E-mail<input type="email" id="em" autocomplete="username" required></label>
+    <label>Mot de passe<input type="password" id="pw" autocomplete="current-password" required></label>
+    <p class="err" id="le" role="alert"></p>
+    <button class="btn">Se connecter</button>
+  </form>
+</section>
+
+<section id="app" hidden>
+  <div class="bar"><a class="brand" href="index.html"><img src="assets/logo.png" alt="" width="36" height="36"><span>Dashboard</span></a>
+    <div style="display:flex;gap:.6rem"><a class="btn ghost sm" href="index.html" target="_blank">Voir le site</a><button class="btn sm" id="out">Déconnexion</button></div></div>
+  <div class="dash">
+    <form class="pan" id="pf">
+      <h2 id="ft">Nouvel article</h2>
+      <label>Titre<input id="t" required></label>
+      <label>Catégorie<select id="c"><option>Design graphique</option><option>Brand design</option><option>Motion design</option><option>Marketing digital</option><option>Formation</option><option>Actualité</option></select></label>
+      <label>Image de couverture<input type="file" id="im" accept="image/*"></label>
+      <label>Résumé (affiché sur la carte)<textarea id="x" rows="2" required></textarea></label>
+      <label>Contenu de l’article<textarea id="b" rows="8" required></textarea></label>
+      <div class="cta"><button class="btn">Publier</button><button type="button" class="btn ghost" id="rs">Annuler</button></div>
+      <p class="ok" id="ms" role="status"></p>
+    </form>
+    <div style="display:grid;gap:1.5rem;align-content:start">
+      <div class="pan"><div class="k"><div><b id="kp">0</b><p>articles publiés</p></div><div><b id="ks">0</b><p>abonnés newsletter</p></div></div></div>
+      <div class="pan"><h2>Articles</h2><div id="list"></div></div>
+      <div class="pan"><h2>Abonnés</h2><div id="subs"></div><button class="btn ghost sm" id="csv">Exporter en CSV</button></div>
+    </div>
+  </div>
+</section>
+<script src="admin.js"></script>
+</body>
+</html>
